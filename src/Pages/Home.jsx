@@ -225,7 +225,7 @@ const Home = () => {
             </Button> */}
             <Button
               onClick={() => {
-                navigate(`quiz-level/${subject?.value}`);
+                navigate(`/${subject?.value}/quiz-level`);
               }}
             >
               Click Here

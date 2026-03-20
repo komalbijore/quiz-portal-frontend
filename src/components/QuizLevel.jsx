@@ -1,8 +1,7 @@
-import { Select } from "@mui/material";
-import React from "react";
-import { subjects } from "../Pages/Home";
 import { Brain, CircleCheck, Play, Signal, Zap } from "lucide-react";
 import laptopImage from "../assets/images/laptopImage.png";
+import { subjects } from "../Pages/Home";
+import { useNavigate, useParams } from "react-router-dom";
 
 const QuizLevel = () => {
   const quizLevelOptions = [
@@ -37,21 +36,38 @@ const QuizLevel = () => {
     },
   ];
 
-  const subjectName = window.location.pathname?.replace("/quiz-level/", "");
-  const subject = subjects?.find((sub) => sub?.value === subjectName);
+  const subjectName = window.location.pathname?.replace(
+    ["quiz-level", "/"],
+    "",
+  );
+
+  // import { useParams } from "react-router-dom";
+
+  const { subject } = useParams();
+
+  const subjectDetails = subjects?.find((sub) => sub?.value === subject);
+
+  console.log({ kkkhhhh: subject });
+  // const subject = subjects?.find((sub) => sub?.value === subjectName);
 
   // const subjectImage=subject?.
+  console.log({ path: window.location.pathname });
 
-  console.log({ subjectName, window, subject });
+  const navigate = useNavigate();
+  console.log({ subjectName, window });
   return (
     <>
-      <div className="w-[60%] p-8 mt-24 border-2 border-gray-200 rounded-2xl  shadow-2xl m-auto ">
+      <div
+        // style={{ backgroundImage: `url(${backgroundImage})` }}
+        className="w-[60%] p-8 mt-24 border-2 border-gray-200 rounded-2xl bg-url() shadow-2xl m-auto "
+      >
         <div className="flex gap-8 items-center w-full">
-          <img src={subject?.image} className="w-[120px] h-[120px]" />
+          <img src={subjectDetails?.image} className="w-[120px] h-[120px]" />
           <div className="w-[45%]">
             <h2 className="text-[25px] text-gray-700">Choose Quiz level for</h2>
             <h1 className="font-bold text-[35px]">
-              <span className="text-blue-700">{subject?.label} </span> {"  "}
+              <span className="text-blue-700">{subjectDetails?.label} </span>{" "}
+              {"  "}
               Quiz
             </h1>
             <p className="text-[20px] text-[25px] text-gray-600">
@@ -79,7 +95,7 @@ const QuizLevel = () => {
                 <div
                   className={`bg-white border border-gray-200 rounded-2xl p-4 flex flex-col gap-2 items-center
   shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:translate-x-1 
-  transition-all hover:bg-blue-200 duration-300 ease-out cursor-pointer ${item?.extraStyle}`}
+  transition-all hover:bg-blue-200 duration-300 ease-out ${item?.extraStyle}`}
                 >
                   <span className="p-3 rounded-full bg-gray-100">
                     {item?.icon}
@@ -106,7 +122,12 @@ const QuizLevel = () => {
                     );
                   })}
 
-                  <button className=" focus:outline:none cursor-pointer border flex gap-2 w-[90%]  text-[14px] py-2 justify-center rounded-full text-white bg-blue-700">
+                  <button
+                    onClick={() =>
+                      navigate(`/${subject}/quiz-level/${item?.value}`)
+                    }
+                    className=" focus:outline:none cursor-pointer border flex gap-2 w-[90%]  text-[14px] py-2 justify-center rounded-full text-white bg-blue-700"
+                  >
                     <span className="mt-[2px]">
                       <Play className="size-4" />
                     </span>

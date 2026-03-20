@@ -9,7 +9,8 @@ import Login from "./Pages/authentication/Login";
 import Signup from "./Pages/authentication/Signup";
 import Navbar from "./components/Navbar";
 import QuizLevel from "./components/QuizLevel";
-
+import Quiz from "./components/Quiz";
+// import Quiz from "./components/Quiz";
 function App() {
   console.log("App");
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path={`/quiz-level/:subject`} element={<QuizLevel />} />
+          <Route path={`/:subject/quiz-level`} element={<QuizLevel />} />
+          <Route path={`/:subject/quiz-level/:level`} element={<Quiz />} />
         </Routes>
       </BrowserRouter>
     </>
