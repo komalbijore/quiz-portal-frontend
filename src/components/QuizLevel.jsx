@@ -36,10 +36,10 @@ const QuizLevel = () => {
     },
   ];
 
-  const subjectName = window.location.pathname?.replace(
-    ["quiz-level", "/"],
-    "",
-  );
+  // const subjectName = window.location.pathname?.replace(
+  //   ["quiz-level", "/"],
+  //   "",
+  // );
 
   // import { useParams } from "react-router-dom";
 
@@ -54,15 +54,15 @@ const QuizLevel = () => {
   console.log({ path: window.location.pathname });
 
   const navigate = useNavigate();
-  console.log({ subjectName, window });
+  console.log({ subject, window });
   return (
     <>
       <div
         // style={{ backgroundImage: `url(${backgroundImage})` }}
-        className="w-[60%] p-8 mt-24 border-2 border-gray-200 rounded-2xl bg-url() shadow-2xl m-auto "
+        className="md:w-[75%] p-8 mt-2 border-2 border-gray-200 rounded-2xl shadow-2xl m-auto flex-wrap w-fit m-2 "
       >
         <div className="flex gap-8 items-center w-full">
-          <img src={subjectDetails?.image} className="w-[120px] h-[120px]" />
+          <img src={subjectDetails?.image} className="w-[200px] h-[120px]" />
           <div className="w-[45%]">
             <h2 className="text-[25px] text-gray-700">Choose Quiz level for</h2>
             <h1 className="font-bold text-[35px]">
@@ -70,7 +70,7 @@ const QuizLevel = () => {
               {"  "}
               Quiz
             </h1>
-            <p className="text-[20px] text-[25px] text-gray-600">
+            <p className="text-[25x]  text-gray-600">
               Select Difficulty Level
             </p>
           </div>
@@ -85,7 +85,7 @@ const QuizLevel = () => {
 
         <div className="w-full">
           {/* <p className="text-[20px] pl-[138px]">Select Difficulty Level</p> */}
-          <div className="grid grid-cols-3 gap-8 mt-5">
+          <div className="md:grid md:grid-cols-3 md:gap-8 md:mt-5 flex flex-col gap-7 shadow-md m-2 border-none">
             {quizLevelOptions?.map((item) => {
               return (
                 // <div
@@ -95,7 +95,7 @@ const QuizLevel = () => {
                 <div
                   className={`bg-white border border-gray-200 rounded-2xl p-4 flex flex-col gap-2 items-center
   shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:translate-x-1 
-  transition-all hover:bg-blue-200 duration-300 ease-out ${item?.extraStyle}`}
+  transition-all hover:bg-[aliceblue] duration-300 ease-out ${item?.extraStyle}`}
                 >
                   <span className="p-3 rounded-full bg-gray-100">
                     {item?.icon}
@@ -113,7 +113,7 @@ const QuizLevel = () => {
                       <>
                         <div
                           key={index}
-                          className="flex flex-row gap-1 justify-start pl-12 w-full text-center"
+                          className="flex flex-row gap-1 justify-center md:justify-start md:pl-12 w-full text-center"
                         >
                           <CircleCheck className="size-4 mt-1.5" />{" "}
                           <span className="text-gray-700">{concept}</span>

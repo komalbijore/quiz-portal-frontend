@@ -1,11 +1,17 @@
 import { Button } from "@mui/material";
 import React from "react";
 
-import htmlImage from "../assets/images/htmlImage.png";
+import htmlImage from "../assets/images/HTML.jpg";
 
-import cssImage from "../assets/images/cssImage.png";
+import cssImage from "../assets/images/css.png";
 
-import javascriptImage from "../assets/images/javascriptImage.jpg";
+import javascriptImage from "../assets/images/js.png";
+import reactjsImage from "../assets/images/react.png";
+import sqlImage from "../assets/images/sql.png";
+import javaImage from "../assets/images/java.jpg";
+import advanceJavaImage from "../assets/images/advancedJava.jpg";
+import javaFrameworkImage from "../assets/images/frameworks.png";
+
 import { useNavigate } from "react-router-dom";
 
 // const subjectsArrays = [
@@ -193,9 +199,62 @@ import { useNavigate } from "react-router-dom";
 // ];
 
 export const subjects = [
-  { label: "HTML", image: htmlImage, value: "html" },
-  { label: "CSS", image: cssImage, value: "css" },
-  { label: "Javascript", image: javascriptImage, value: "js" },
+  {
+    label: "HTML",
+    descriptions:
+      "This quiz is designed to test your knowledge and understanding of the Hypertext Markup Language.",
+    image: htmlImage,
+    value: "html",
+  },
+  {
+    label: "CSS",
+    descriptions:
+      "This quiz is designed to test your knowledge and understanding of the Cascading Style Sheets (CSS)",
+    image: cssImage,
+    value: "css",
+  },
+  {
+    label: "Javascript",
+    descriptions:
+      "This quiz is designed to test your knowledge and understanding of the JavaScript programming language",
+    image: javascriptImage,
+    value: "js",
+  },
+   {
+    label: "React JS",
+    descriptions:
+      "This quiz is designed to test your knowledge and understanding of the React JS",
+    image: reactjsImage,
+    value: "reactjs",
+  },
+     {
+    label: "SQL",
+    descriptions:
+      "This quiz is designed to test your knowledge and understanding of the Structured Query Language",
+    image: sqlImage,
+    value: "sql",
+  },
+     {
+    label: "Java",
+    descriptions:
+      "This quiz is designed to test your knowledge and understanding of the Java programming language.",
+    image: javaImage,
+    value: "java",
+  },
+  {
+    label: "Advanced Java",
+    descriptions:
+      "This quiz is designed to test your knowledge and understanding of the Advanced Java which include JDBC, Servlet ad JSP.",
+    image: advanceJavaImage,
+    value: "advance-java",
+  },
+  {
+    label: "Java FrameWork",
+    descriptions:
+      "This quiz is designed to test your knowledge and understanding of the java framework that is Spring and Hibernate.",
+    image: javaFrameworkImage,
+    value: "java",
+  },
 ];
 
 console.log("home");
@@ -204,32 +263,37 @@ const Home = () => {
   const navigate = useNavigate();
   console.log("kkkkhhh");
   return (
-    <div className="grid grid-cols-4 gap-4 p-5">
+    <div className="md:grid md:grid-cols-3 md:gap-6 p-5 flex flex-col gap-3">
       {subjects?.map((subject) => {
         console.log({ subject });
         return (
-          <div key={subject?.value} className="text-center bg-gray-300">
+          <div
+            key={subject?.value}
+            className="bg-[aliceblue] flex flex-col h-full rounded-2xl shadow-md"
+          >
+            <h1 className="font-bold text-2xl p-2 text-center">
+              {subject?.label}
+            </h1>
+
             <img
               src={subject?.image}
               alt={subject?.label}
-              className="w-full h-[300px]"
+              className="w-full h-[200px]"
             />
-            <p>{subject?.label}</p>
-            {/* <Button
-            // variant="outlined"
-            // onClick={() => {
-            //   // navigate(`/quiz-level/${subject?.value}`);
-            // }}
-            >
-              Click here{" "}
-            </Button> */}
-            <Button
-              onClick={() => {
-                navigate(`/${subject?.value}/quiz-level`);
-              }}
-            >
-              Click Here
-            </Button>
+
+            <div className="flex flex-col justify-between flex-1 m-3.5 gap-4">
+              <p className="text-justify min-h[100px]">{subject?.descriptions}</p>
+
+              <Button
+                onClick={() => {
+                  navigate(`/${subject?.value}/quiz-level`);
+                }}
+                className="!bg-blue-950 h-[48px] !text-white !mt-auto !rounded-full"
+                fullWidth
+              >
+                Click Here
+              </Button>
+            </div>
           </div>
         );
       })}
