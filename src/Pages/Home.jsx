@@ -192,10 +192,10 @@ import { useNavigate } from "react-router-dom";
 //   },
 // ];
 
-const subjects = [
-  { subjectName: "HTML", image: htmlImage, value: "html" },
-  { subjectName: "CSS", image: cssImage, value: "css" },
-  { subjectName: "Javascript", image: javascriptImage, value: "js" },
+export const subjects = [
+  { label: "HTML", image: htmlImage, value: "html" },
+  { label: "CSS", image: cssImage, value: "css" },
+  { label: "Javascript", image: javascriptImage, value: "js" },
 ];
 
 console.log("home");
@@ -211,10 +211,10 @@ const Home = () => {
           <div key={subject?.value} className="text-center bg-gray-300">
             <img
               src={subject?.image}
-              alt={subject?.subjectName}
+              alt={subject?.label}
               className="w-full h-[300px]"
             />
-            <p>{subject?.subjectName}</p>
+            <p>{subject?.label}</p>
             {/* <Button
             // variant="outlined"
             // onClick={() => {
@@ -225,7 +225,7 @@ const Home = () => {
             </Button> */}
             <Button
               onClick={() => {
-                navigate(`quiz-level/${subject?.value}`);
+                navigate(`/${subject?.value}/quiz-level`);
               }}
             >
               Click Here
