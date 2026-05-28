@@ -21,9 +21,9 @@ const Login = () => {
       <FormProvider {...methods}>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="p-5 w-[400px]  !border border-gray-200 shadow-sm rounded-2xl m-auto text-gray-600"
+          className="md:p-5 p-2 w-[350px]  !border border-gray-200 shadow-sm rounded-2xl m-auto text-gray-600"
         >
-          <img src={login} className="w-[250px] !h-[170px] m-auto" />
+          <img src={login} className="w-[250px] !h-[150px] m-auto" />
           <h1 className="text-[24px] !font-semibold p-1 text-center ">
             Welcome Back!
           </h1>
